@@ -13,7 +13,13 @@ export const actionCreators = {
 };
 
 // Initial state
-const initialState = {};
+const initialState = {
+  1: {
+    id: 1,
+    title: 'Programming',
+    description: ''
+  }
+};
 
 // Reducer
 const reducer = (state = initialState, action) => {
@@ -21,7 +27,7 @@ const reducer = (state = initialState, action) => {
 
   switch (type) {
     case types.ADD_DECK:
-      return { ...state, payload };
+      return { ...state, [payload.id]: payload };
     case types.UPDATE_DECK:
       return { ...state };
     case types.REMOVE_DECK:
