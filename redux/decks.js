@@ -1,8 +1,6 @@
 // Actions that can be dispatched
 export const types = {
-  ADD_DECK: 'decks/add',
-  UPDATE_DECK: 'decks/update',
-  REMOVE_DECK: 'decks/delete'
+  ADD_DECK: 'decks/add'
 };
 
 // Helper functions to dispatch actions
@@ -17,7 +15,9 @@ const initialState = {
   1: {
     id: 1,
     title: 'Programming',
-    description: ''
+    description: '',
+    score: 0,
+    numberOfCards: 0
   }
 };
 
@@ -27,11 +27,10 @@ const reducer = (state = initialState, action) => {
 
   switch (type) {
     case types.ADD_DECK:
-      return { ...state, [payload.id]: payload };
-    case types.UPDATE_DECK:
-      return { ...state };
-    case types.REMOVE_DECK:
-      return { ...state };
+      return {
+        ...state,
+        [payload.id]: { ...payload, score: 0, numberOfCards: 0 }
+      };
   }
 
   return state;

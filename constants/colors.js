@@ -5,7 +5,13 @@ export default {
   secondary: '#f4511e',
   secondaryLight: '#ff844b',
   secondaryDark: '#b91400',
+  success: '#00701a',
+  error: '#ab000d',
+  warning: '#f4511e',
   textOnPrimary: '#f4511e',
-  textOnSecondary: '#000000',
+  textOnSecondary: '#fafafa',
+  textOnSuccess: '#fafafa',
+  textOnError: '#fafafa',
+  textOnWarning: '#fafafa',
   text: '#212121'
 };

@@ -9,7 +9,8 @@ import colors from '../constants/colors';
 class Home extends Component {
   addDeck = () => this.props.navigation.navigate('NewDeck');
 
-  viewDeck = id => this.props.navigation.navigate('Deck', { deckId: id });
+  viewDeck = (id, title) =>
+    this.props.navigation.navigate('Deck', { deckId: id, title });
 
   render() {
     const { decks } = this.props;

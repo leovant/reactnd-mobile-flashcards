@@ -23,6 +23,8 @@ const Input = styled.TextInput`
   line-height: 28px;
   padding: 4px;
   color: ${colors.text};
+  width: 100%;
+  text-align: center;
 `;
 
 export default class DeckForm extends Component {

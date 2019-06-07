@@ -7,7 +7,7 @@ export default class DecksList extends Component {
     const { onItemPressed } = this.props;
 
     return (
-      <TouchableOpacity key={i} onPress={() => onItemPressed(i)}>
+      <TouchableOpacity key={i} onPress={() => onItemPressed(i, item.title)}>
         <DeckItem item={item} />
       </TouchableOpacity>
     );

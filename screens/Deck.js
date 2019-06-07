@@ -7,14 +7,15 @@ import FloatBar from '../components/FloatBar';
 class Deck extends Component {
   render() {
     const { deck } = this.props;
+    const buttons = [
+      { title: 'Start!', onPress: () => console.warn('Start!') },
+      { title: 'Add card', onPress: () => console.warn('New card') }
+    ];
 
     return (
       <View style={{ flex: 1 }}>
         <DeckItem item={deck} />
-        <FloatBar>
-          <Button title="Start!" onPress={() => console.warn('Start!')} />
-          <Button title="Add card" onPress={() => console.warn('New card')} />
-        </FloatBar>
+        <FloatBar buttons={buttons} />
       </View>
     );
   }
