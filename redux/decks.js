@@ -1,13 +1,13 @@
 // Actions that can be dispatched
 export const types = {
-  ADD_DECK: 'decks/add'
+  ADD_DECK: 'decks/add',
+  INCREMENT_CARDS: 'decks/increment-cards'
 };
 
 // Helper functions to dispatch actions
 export const actionCreators = {
   add: item => ({ type: types.ADD_DECK, payload: item }),
-  update: item => ({ type: types.UPDATE_DECK, payload: item }),
-  remove: id => ({ type: types.REMOVE_DECK, payload: id })
+  incrementCards: item => ({ type: types.INCREMENT_CARDS, payload: item })
 };
 
 // Initial state
@@ -30,6 +30,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         [payload.id]: { ...payload, score: 0, numberOfCards: 0 }
+      };
+    case types.INCREMENT_CARDS:
+      return {
+        ...state,
+        [payload.id]: {
+          ...state[payload.id],
+          numberOfCards: state[payload.id].numberOfCards + 1
+        }
       };
   }
 

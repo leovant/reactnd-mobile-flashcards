@@ -1,31 +1,7 @@
 import React, { Component } from 'react';
-import { Button, Text, TextInput, View } from 'react-native';
 import uuid from 'uuid/v1';
-import styled from 'styled-components/native';
-import colors from '../constants/colors';
+import { Container, Label, Input } from './Form';
 import FloatButton from './FloatButton';
-
-const Container = styled.View`
-  display: flex;
-  height: 100%;
-  align-items: center;
-  padding: 10px;
-`;
-
-const Label = styled.Text`
-  margin: 40px 0 20px 0;
-  font-size: 20px;
-  color: ${colors.secondary};
-`;
-
-const Input = styled.TextInput`
-  font-size: 20px;
-  line-height: 28px;
-  padding: 4px;
-  color: ${colors.text};
-  width: 100%;
-  text-align: center;
-`;
 
 export default class DeckForm extends Component {
   constructor(props) {

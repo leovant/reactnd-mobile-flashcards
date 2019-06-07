@@ -91,7 +91,7 @@ export default class DeckItem extends Component {
           <DeckCardsNumber>
             {' '}
             {item.numberOfCards > 0
-              ? `${item.numberOfCards} cards`
+              ? `${item.numberOfCards} card${item.numberOfCards > 1 ? 's' : ''}`
               : 'No cards'}{' '}
           </DeckCardsNumber>
         </DeckContainer>

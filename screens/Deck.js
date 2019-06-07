@@ -9,7 +9,11 @@ class Deck extends Component {
     const { deck } = this.props;
     const buttons = [
       { title: 'Start!', onPress: () => console.warn('Start!') },
-      { title: 'Add card', onPress: () => console.warn('New card') }
+      {
+        title: 'Add card',
+        onPress: () =>
+          this.props.navigation.navigate('NewCard', { deckId: deck.id })
+      }
     ];
 
     return (
