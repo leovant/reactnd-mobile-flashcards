@@ -13,5 +13,6 @@ export default {
   textOnSuccess: '#fafafa',
   textOnError: '#fafafa',
   textOnWarning: '#fafafa',
-  text: '#212121'
+  text: '#212121',
+  whiteText: '#fafafa'
 };

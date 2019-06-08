@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native';
 import DeckItem from './DeckItem';
 
 export default class DecksList extends Component {
@@ -7,7 +7,7 @@ export default class DecksList extends Component {
     const { onItemPressed } = this.props;
 
     return (
-      <TouchableOpacity key={i} onPress={() => onItemPressed(i, item.title)}>
+      <TouchableOpacity key={i} onPress={() => onItemPressed(item)}>
         <DeckItem item={item} />
       </TouchableOpacity>
     );
@@ -17,10 +17,10 @@ export default class DecksList extends Component {
     const { items } = this.props;
 
     return (
-      <View>
+      <ScrollView>
         {items &&
           Object.keys(items).map(index => this.renderItem(items[index], index))}
-      </View>
+      </ScrollView>
     );
   }
 }

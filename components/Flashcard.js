@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { Animated } from 'react-native';
 import styled from 'styled-components/native';
-import colors from '../constants/colors';
+import colors from '../utils/colors';
+import { Button, ButtonText, FloatingActions } from './Buttons';
 
 const Container = styled.View`
   display: flex;
@@ -18,39 +20,10 @@ const Text = styled.Text`
   color: ${colors.secondary};
 `;
 
-const Actions = styled.View`
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: ${props =>
-    props.children.length > 1 ? 'space-between' : 'center'};
-  align-items: center;
-  padding: 10px;
-`;
-
-const Button = styled.TouchableOpacity`
-  padding: 10px;
-  background-color: ${props => props.color || colors.secondary};
-  border-radius: 2px;
-`;
-
-const ButtonText = styled.Text`
-  color: ${props => props.color || colors.textOnSecondary};
-  font-weight: bold;
-  text-transform: uppercase;
-`;
-
 export default class Flashcard extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      showAnswer: false
-    };
-  }
+  state = {
+    showAnswer: false
+  };
 
   componentWillReceiveProps(nextProps) {
     if (this.props.card !== nextProps.card) {
@@ -68,25 +41,25 @@ export default class Flashcard extends Component {
   renderQuestion = card => (
     <Container>
       <Text>{card.question}</Text>
-      <Actions>
+      <FloatingActions>
         <Button color={colors.secondary} onPress={this.showAnswer}>
           <ButtonText>Show answer</ButtonText>
         </Button>
-      </Actions>
+      </FloatingActions>
     </Container>
   );
 
   renderAnswer = card => (
     <Container>
       <Text>{card.answer}</Text>
-      <Actions>
+      <FloatingActions>
         <Button color={colors.success} onPress={this.onCorrect}>
           <ButtonText>Correct</ButtonText>
         </Button>
         <Button color={colors.error} onPress={this.onIncorrect}>
           <ButtonText>Incorrect</ButtonText>
         </Button>
-      </Actions>
+      </FloatingActions>
     </Container>
   );
 

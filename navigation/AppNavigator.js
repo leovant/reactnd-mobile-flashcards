@@ -5,7 +5,7 @@ import Deck from '../screens/Deck';
 import NewDeck from '../screens/NewDeck';
 import NewCard from '../screens/NewCard';
 import Quiz from '../screens/Quiz';
-import colors from '../constants/colors';
+import colors from '../utils/colors';
 
 export default createAppContainer(
   createStackNavigator({

@@ -5,14 +5,17 @@ import { actionCreators as cardActions } from '../redux/cards';
 import { actionCreators as deckActions } from '../redux/decks';
 
 class NewCard extends Component {
-  render() {
+  onSubmit = data => {
     const { addCard, goBack } = this.props;
 
-    return <CardForm onSubmit={addCard} redirectOnSubmit={goBack} />;
+    addCard(data);
+    goBack();
+  };
+
+  render() {
+    return <CardForm onSubmit={this.onSubmit} />;
   }
 }
-
-const mapStateToProps = ({ cards }) => ({ cards });
 
 const mapDispatchToProps = (dispatch, { navigation }) => {
   const { deckId } = navigation.state.params;
@@ -27,6 +30,6 @@ const mapDispatchToProps = (dispatch, { navigation }) => {
 };
 
 export default connect(
-  mapStateToProps,
+  undefined,
   mapDispatchToProps
 )(NewCard);

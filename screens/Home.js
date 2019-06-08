@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View } from 'react-native';
-import { actionCreators } from '../redux/decks';
 import DecksList from '../components/DecksList';
-import FloatButton from '../components/FloatButton';
-import colors from '../constants/colors';
+import { Button, ButtonText, FloatingActions } from '../components/Buttons';
 
 class Home extends Component {
   addDeck = () => this.props.navigation.navigate('NewDeck');
 
-  viewDeck = (id, title) =>
+  viewDeck = ({ id, title }) =>
     this.props.navigation.navigate('Deck', { deckId: id, title });
 
   render() {
@@ -17,8 +15,16 @@ class Home extends Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <DecksList items={decks} onItemPressed={this.viewDeck} />
-        <FloatButton title="Add deck" onPress={this.addDeck} />
+        <DecksList
+          items={decks}
+          onItemPressed={this.viewDeck}
+          style={{ paddingBottom: 50 }}
+        />
+        <FloatingActions>
+          <Button onPress={this.addDeck}>
+            <ButtonText>Add Deck</ButtonText>
+          </Button>
+        </FloatingActions>
       </View>
     );
   }

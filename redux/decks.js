@@ -17,7 +17,7 @@ const initialState = {
   1: {
     id: 1,
     title: 'Programming',
-    description: '',
+    description: 'Questions about programming',
     score: 0,
     numberOfCards: 3
   }
@@ -42,11 +42,13 @@ const reducer = (state = initialState, action) => {
         }
       };
     case types.UPDATE_SCORE:
+      const score = (payload.score / state[payload.id].numberOfCards) * 100;
+
       return {
         ...state,
         [payload.id]: {
           ...state[payload.id],
-          score: payload.score
+          score: Math.round(score)
         }
       };
   }

@@ -4,10 +4,15 @@ import DeckForm from '../components/DeckForm';
 import { actionCreators } from '../redux/decks';
 
 class NewDeck extends Component {
-  render() {
-    const { addDeck, goBack } = this.props;
+  onSubmit = data => {
+    const { addDeck, goBack, redirectTo } = this.props;
 
-    return <DeckForm onSubmit={addDeck} redirectOnSubmit={goBack} />;
+    addDeck(data);
+    redirectTo(data);
+  };
+
+  render() {
+    return <DeckForm onSubmit={this.onSubmit} />;
   }
 }
 
@@ -15,7 +20,8 @@ const mapStateToProps = ({ decks }) => ({ decks });
 
 const mapDispatchToProps = (dispatch, { navigation }) => ({
   addDeck: item => dispatch(actionCreators.add(item)),
-  goBack: () => navigation.goBack()
+  redirectTo: deck =>
+    navigation.navigate('Deck', { deckId: deck.id, title: deck.title })
 });
 
 export default connect(

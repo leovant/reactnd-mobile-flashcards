@@ -1,33 +1,49 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { Animated, View } from 'react-native';
 import { connect } from 'react-redux';
-import DeckItem from '../components/DeckItem';
-import FloatBar from '../components/FloatBar';
+import DeckDetail from '../components/DeckDetail';
+import { Button, ButtonText, FloatingActions } from '../components/Buttons';
 
 class Deck extends Component {
+  state = {
+    fadeAnim: new Animated.Value(0)
+  };
+
+  componentDidMount() {
+    Animated.timing(this.state.fadeAnim, {
+      toValue: 1,
+      duration: 500
+    }).start();
+  }
+
   render() {
     const { deck } = this.props;
-    const buttons = [
-      {
-        title: 'Start!',
-        onPress: () =>
-          this.props.navigation.navigate('Quiz', {
-            deckId: deck.id,
-            title: deck.title
-          })
-      },
-      {
-        title: 'Add card',
-        onPress: () =>
-          this.props.navigation.navigate('NewCard', { deckId: deck.id })
-      }
-    ];
 
     return (
-      <View style={{ flex: 1 }}>
-        <DeckItem item={deck} />
-        <FloatBar buttons={buttons} />
-      </View>
+      <Animated.View style={{ flex: 1, opacity: this.state.fadeAnim }}>
+        <DeckDetail deck={deck} />
+        <FloatingActions>
+          {deck.numberOfCards > 0 && (
+            <Button
+              onPress={() =>
+                this.props.navigation.navigate('Quiz', {
+                  deckId: deck.id,
+                  title: deck.title
+                })
+              }
+            >
+              <ButtonText>Start a Quiz</ButtonText>
+            </Button>
+          )}
+          <Button
+            onPress={() =>
+              this.props.navigation.navigate('NewCard', { deckId: deck.id })
+            }
+          >
+            <ButtonText>New Question</ButtonText>
+          </Button>
+        </FloatingActions>
+      </Animated.View>
     );
   }
 }
