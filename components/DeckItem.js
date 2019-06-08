@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
-import { Text, View } from 'react-native';
 import styled from 'styled-components/native';
 import { ThemeProvider } from 'styled-components';
 import colors from '../constants/colors';
 
 const DeckContainer = styled.View`
   margin: 10px;
-  background-color: white;
-  box-shadow: 8px 10px 16px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
   background-color: ${props => props.theme.background};
   color: ${props => props.theme.color};
@@ -83,7 +80,7 @@ export default class DeckItem extends Component {
       <ThemeProvider theme={getTheme()}>
         <DeckContainer>
           <DeckScoreContainer>
-            <DeckScoreLabel>Score</DeckScoreLabel>
+            <DeckScoreLabel>Last score</DeckScoreLabel>
             <DeckScore>{Math.round(score)}</DeckScore>
           </DeckScoreContainer>
           <DeckTitle> {item.title} </DeckTitle>
@@ -92,7 +89,7 @@ export default class DeckItem extends Component {
             {' '}
             {item.numberOfCards > 0
               ? `${item.numberOfCards} card${item.numberOfCards > 1 ? 's' : ''}`
-              : 'No cards'}{' '}
+              : 'No cards'}
           </DeckCardsNumber>
         </DeckContainer>
       </ThemeProvider>

@@ -4,6 +4,7 @@ import Home from '../screens/Home';
 import Deck from '../screens/Deck';
 import NewDeck from '../screens/NewDeck';
 import NewCard from '../screens/NewCard';
+import Quiz from '../screens/Quiz';
 import colors from '../constants/colors';
 
 export default createAppContainer(
@@ -39,6 +40,14 @@ export default createAppContainer(
         headerTintColor: colors.secondary,
         headerStyle: { backgroundColor: colors.primary }
       }
+    },
+    Quiz: {
+      screen: Quiz,
+      navigationOptions: ({ navigation }) => ({
+        headerTintColor: colors.secondary,
+        headerStyle: { backgroundColor: colors.primary },
+        title: navigation.state.params.title
+      })
     }
   })
 );
